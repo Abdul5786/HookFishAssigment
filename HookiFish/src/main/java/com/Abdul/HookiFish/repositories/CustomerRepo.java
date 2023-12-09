@@ -1,0 +1,8 @@
+package com.Abdul.HookiFish.repositories;
+
+import com.Abdul.HookiFish.entities.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerRepo extends JpaRepository<Customer,Long>
+{
+}
