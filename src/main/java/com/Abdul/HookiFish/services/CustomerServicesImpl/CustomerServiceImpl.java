@@ -44,18 +44,6 @@ public class CustomerServiceImpl implements CustomerService {
         return this.modelMapper.map(saved, CustomerDtos.class);
     }
 
-    @Override
-//    public List<CustomerDtos> listofCustomerWithoutProduct()
-//    {
-//        // fetching list of customers
-//        List<Customer> all = customerRepo.findAll();
-//        // using stream apis to find the customer who have 0 products
-//        // using isEmpty function
-//        List<Customer> customerWithoutList = all.stream().filter(customer -> customer.getProducts().isEmpty()).collect(Collectors.toList());
-//        List<CustomerDtos> customerWithoutProduct = customerWithoutList.stream().map(customer -> this.modelMapper.map(customer, CustomerDtos.class)).collect(Collectors.toList());
-//        return customerWithoutProduct;
-//    }
-
 
     public CustomerDtos updateCustomer(CustomerDtos customerDtos, Long customerId) {
         Customer customer = customerRepo.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("customer", "customerId", +customerId));
@@ -129,7 +117,11 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDtos> getAllCustomer()
     {
           List<Customer> allCustomerList = customerRepo.findAll();
-          return null;
+          List<CustomerDtos> customerDtosList = allCustomerList.stream().map(c -> this.modelMapper.map(c, CustomerDtos.class)).collect(Collectors.toList());
+           return customerDtosList;
+
+
+
     }
 }
 
