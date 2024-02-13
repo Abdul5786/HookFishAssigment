@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -57,6 +58,13 @@ public class CustomerController
           httpHeaders.setContentType(MediaType.APPLICATION_PDF);
           httpHeaders.setContentDispositionFormData("filename","bill.pdf");
           return new ResponseEntity<>(generatedPdf,httpHeaders,HttpStatus.OK);
+      }
+
+          @GetMapping(value = "/getAllCustomerList")
+      public ResponseEntity<List<CustomerDtos>> getAllCustomerList()
+      {
+          List<CustomerDtos> allCustomerList = customerService.getAllCustomer();
+          return new ResponseEntity<>(allCustomerList,HttpStatus.FOUND);
       }
 
 

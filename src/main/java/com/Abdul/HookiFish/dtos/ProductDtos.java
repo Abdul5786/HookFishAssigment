@@ -20,6 +20,7 @@ public class ProductDtos
     private String  productPrice;
     private Integer units;
     private String  brand;
+    private int totalInventoryPrice;
     private ProductCategoryDto productCategories;
 
 }

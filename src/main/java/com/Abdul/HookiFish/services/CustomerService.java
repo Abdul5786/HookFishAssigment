@@ -5,6 +5,8 @@ import com.Abdul.HookiFish.dtos.GeneratedBillDto;
 import com.Abdul.HookiFish.entities.GenerateBill;
 import com.Abdul.HookiFish.dtos.Units;
 
+import java.util.List;
+
 public interface CustomerService
 {
     CustomerDtos addCustomer(CustomerDtos customerDtos);
@@ -17,5 +19,8 @@ public interface CustomerService
     GeneratedBillDto generateBill(GeneratedBillDto generateBill, Integer productId, Long customerId);
 
     GeneratedBillDto getBillReciept(Integer billId);
+
+
+    List<CustomerDtos> getAllCustomer();
 
 }

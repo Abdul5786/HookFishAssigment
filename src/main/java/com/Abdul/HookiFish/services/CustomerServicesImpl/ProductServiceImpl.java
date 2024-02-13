@@ -41,8 +41,8 @@ public class ProductServiceImpl implements ProductService
           Product product = this.modelMapper.map(productDtos, Product.class);
           ProductCategories productCat = productCategoryRepo.findById(productCatId).orElseThrow(() -> new ResourceNotFoundException("product Not Found","productId",+productCatId));
           product.setProductCategories(productCat);
+          product.setTotalInventoryPrice(product.getUnits()*product.getProductPrice());
           Product savedproduct = productRepo.save(product);
-          System.out.println(savedproduct);
           return this.modelMapper.map(savedproduct,ProductDtos.class);
     }
 

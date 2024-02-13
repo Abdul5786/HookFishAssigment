@@ -22,6 +22,7 @@ public class Product
     private Integer units;
     private String  brand;
     private Double discount;
+    private int totalInventoryPrice;
     @ManyToOne
     @JoinColumn(name="productCategoryId")
     private ProductCategories productCategories;
